@@ -1,6 +1,17 @@
 class NegociacoesView {
     
-    template(): string{
+    private _elemento: Element;
+
+    constructor(selector: string){
+        this._elemento =  document.querySelector(selector);
+    }
+
+    update(modelo: Negociacoes): void {
+        
+        this._elemento.innerHTML = this.template(modelo);
+    }
+
+    template(modelo: Negociacoes): string{
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -13,6 +24,16 @@ class NegociacoesView {
             </thead>
 
             <tbody>
+              ${modelo.getNegociacoes.map( negociacao => {
+                 return `
+                    <tr>
+                        <td>${negociacao.data.getDate()} / ${negociacao.data.getMonth()+1} / ${negociacao.data.getFullYear()}</td>
+                        <td>${negociacao.quantidade}</td>
+                        <td>${negociacao.valor}</td>
+                        <td>${negociacao.volume}</td>
+                    </tr>
+                 ` 
+              }).join('')}
             </tbody>
 
             <tfoot>

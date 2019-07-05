@@ -8,7 +8,7 @@ class Negociacoes {
     
     }
 
-    get getNegociacoes(): Negociacao[] {
+    get getNegociacoes(): Array<Negociacao> {
       return [].concat(this._negociacoes);  
     }
 }
