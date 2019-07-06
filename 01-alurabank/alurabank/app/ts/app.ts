@@ -1,2 +1,4 @@
 const controller = new NegociacaoController();
-document.querySelector('.form').addEventListener('submit' , controller.adiciona.bind(controller));
+
+//utilizando JQuery para chamar metodo de adicionar no submit do formulario 
+$('.form').submit(controller.adiciona.bind(controller));

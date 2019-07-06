@@ -1,14 +1,15 @@
 abstract class View<T> {
     
-    private _elemento: Element;
+    private _elemento: JQuery;
 
     constructor(selector: string){
-        this._elemento =  document.querySelector(selector);
+        this._elemento =  $(selector);
+      
     }
 
     update(modelo: T): void{
 
-        this._elemento.innerHTML = this.template(modelo);
+        this._elemento.html(this.template(modelo));
         
         if(!(modelo instanceof Negociacoes)){
             setTimeout(() => {

@@ -1,9 +1,9 @@
 class View {
     constructor(selector) {
-        this._elemento = document.querySelector(selector);
+        this._elemento = $(selector);
     }
     update(modelo) {
-        this._elemento.innerHTML = this.template(modelo);
+        this._elemento.html(this.template(modelo));
         if (!(modelo instanceof Negociacoes)) {
             setTimeout(() => {
                 this._elemento.innerHTML = '';
