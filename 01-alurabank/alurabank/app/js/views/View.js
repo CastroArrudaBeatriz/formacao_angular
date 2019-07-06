@@ -1,4 +1,5 @@
-class View {
+import { Negociacoes } from '../models/Negociacoes';
+export class View {
     constructor(selector) {
         this._elemento = $(selector);
     }

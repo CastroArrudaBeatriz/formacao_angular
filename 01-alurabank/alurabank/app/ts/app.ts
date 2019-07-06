@@ -1,3 +1,5 @@
+import { NegociacaoController } from './controllers/NegociacaoController';
+
 const controller = new NegociacaoController();
 
 //utilizando JQuery para chamar metodo de adicionar no submit do formulario 
