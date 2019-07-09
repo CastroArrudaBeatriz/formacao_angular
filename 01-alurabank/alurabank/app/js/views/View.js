@@ -10,15 +10,20 @@ System.register(["../models/Negociacoes"], function (exports_1, context_1) {
         ],
         execute: function () {
             View = class View {
-                constructor(selector) {
+                constructor(selector, escape = false) {
                     this._elemento = $(selector);
+                    this._escape = escape;
                 }
                 update(modelo) {
-                    this._elemento.html(this.template(modelo));
+                    let template = this.template(modelo);
+                    if (this._escape) {
+                        template = template.replace(/<script>[\s\S]*?<\/script>/, '');
+                    }
+                    this._elemento.html(template);
                     if (!(modelo instanceof Negociacoes_1.Negociacoes)) {
                         setTimeout(() => {
-                            this._elemento.innerHTML = '';
-                        }, 1500);
+                            this._elemento.html(' ');
+                        }, 1000);
                     }
                 }
             };

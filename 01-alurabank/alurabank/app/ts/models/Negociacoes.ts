@@ -10,6 +10,6 @@ export class Negociacoes {
     }
 
     get getNegociacoes(): Array<Negociacao> {
-      return [].concat(this._negociacoes);  
+      return ([] as Array<Negociacao>).concat(this._negociacoes);  
     }
 }
