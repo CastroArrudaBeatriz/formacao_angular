@@ -23,7 +23,7 @@ System.register(["../models/Negociacoes"], function (exports_1, context_1) {
                     if (!(modelo instanceof Negociacoes_1.Negociacoes)) {
                         setTimeout(() => {
                             this._elemento.html(' ');
-                        }, 1000);
+                        }, 2000);
                     }
                 }
             };

@@ -23,21 +23,40 @@ export class NegociacaoController {
 
         event.preventDefault();
         
+        let data = new Date(this._inputData.val().replace(/-/g, ',')); 
+
+        if(!this.verificaDiaUtil(data.getDay())){
+            return;
+        }
+
         const negociacao = new Negociacao( 
-            new Date(this._inputData.val().replace(/-/g, ',')) , 
+            data , 
             parseInt(this._inputQuantidade.val()) , 
             parseFloat(this._inputValor.val()) );
-        
-        console.log(`
-            Data: ${negociacao.data}
-            Quantidade: ${negociacao.quantidade}
-            Valor: ${negociacao.valor}
-            Volume: ${negociacao.volume}
-        `);  
-
+       
         this.negociacoes.adiciona(negociacao);
 
         this.negociacoesView.update(this.negociacoes);  
         this.mensagemView.update('Negociação adicionada com sucesso!');
     }
+
+    private verificaDiaUtil(dia: number): boolean{
+        
+        if( dia == DiaSemana.Domingo || dia == DiaSemana.Sabado){
+            this.mensagemView.update('Só podem ser realizadas negocições em dias uteis');
+            return false;
+        }
+
+        return true;
+    }
+}
+
+enum DiaSemana{
+    Domingo,
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado
 }

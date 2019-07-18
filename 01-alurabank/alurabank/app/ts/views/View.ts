@@ -23,7 +23,7 @@ export abstract class View<T> {
             if(!(modelo instanceof Negociacoes)){
                 setTimeout(() => {
                     this._elemento.html(' ');
-                }, 1000);
+                }, 2000);
             }
            
     
