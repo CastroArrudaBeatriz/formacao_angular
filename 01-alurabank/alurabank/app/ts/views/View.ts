@@ -10,6 +10,7 @@ export abstract class View<T> {
           
         }
     
+        @logarTempoExecucao()
         update(modelo: T): void{
             
             let template = this.template(modelo);

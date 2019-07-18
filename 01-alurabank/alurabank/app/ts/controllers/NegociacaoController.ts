@@ -18,7 +18,8 @@ export class NegociacaoController {
         this._inputValor = $('#valor');
         this.negociacoesView.update(this.negociacoes);
     }
- 
+    
+    @logarTempoExecucao()
     adiciona(event: Event){
 
         event.preventDefault();
