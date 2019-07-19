@@ -1,4 +1,6 @@
 import { Negociacoes } from '../models/Negociacoes';
+import { logarTempoExecucao } from '../helpers/decorators/index';
+
 export abstract class View<T> {
         
         private _elemento: JQuery;

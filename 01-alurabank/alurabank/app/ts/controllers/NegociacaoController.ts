@@ -1,5 +1,6 @@
 import { Negociacao,Negociacoes } from '../models/index';
 import { NegociacoesView,MensagemView } from '../views/index';
+import { logarTempoExecucao } from '../helpers/decorators/index';
 
 
 export class NegociacaoController {
