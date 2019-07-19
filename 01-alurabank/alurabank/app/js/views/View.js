@@ -37,7 +37,7 @@ System.register(["../models/Negociacoes", "../helpers/decorators/index"], functi
                 }
             };
             __decorate([
-                index_1.logarTempoExecucao()
+                index_1.logarTempoExecucao(true)
             ], View.prototype, "update", null);
             exports_1("View", View);
         }

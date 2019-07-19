@@ -1,10 +1,13 @@
-export function logarTempoExecucao(){
+export function logarTempoExecucao( showSeconds: boolean = false){
 
     return function(target: any, method: string, descriptor: PropertyDescriptor){
 
         const metodoOriginal = descriptor.value;
 
         descriptor.value = function(...args: any[]){
+
+            let unidade = showSeconds ? 's' : 'ms';
+            let divisor = showSeconds ? 1000 : 1;
 
             console.log('-------------------------');
             console.log(` parametros passados para o metodo  ${method}(${JSON.stringify(args)}) `);
@@ -15,7 +18,7 @@ export function logarTempoExecucao(){
             const t2 = performance.now(); 
             console.log(`o retorno do metodo ${method} é ${JSON.stringify(retorno)}`);
             
-            console.log(`tempo de execucao: ${t2 - t1}`);
+            console.log(`tempo de execucao: ${(t2 - t1) / divisor } ${unidade}`);
 
             return retorno;
         
