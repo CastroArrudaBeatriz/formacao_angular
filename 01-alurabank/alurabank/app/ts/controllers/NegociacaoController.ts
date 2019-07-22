@@ -53,6 +53,29 @@ export class NegociacaoController {
 
         return true;
     }
+
+    importaDados(){
+
+        function isOk( res: Response){
+            if(res.ok){
+                return res;
+            }else{
+                throw new Error(res.statusText)
+                
+            }
+        }
+
+        fetch('http://localhost:8080/dados')
+            .then( res => isOk(res))
+            .then( res => res.json() )
+            .then( (dados: any[]) => {
+                dados.map(dado =>  new Negociacao( new Date(), dado.vezes , dado.montante))
+                .forEach( negociacao => this.negociacoes.adiciona(negociacao))
+                this.negociacoesView.update(this.negociacoes)
+            }
+            )
+            .catch( err => console.log(err));
+    }
 }
 
 enum DiaSemana{
