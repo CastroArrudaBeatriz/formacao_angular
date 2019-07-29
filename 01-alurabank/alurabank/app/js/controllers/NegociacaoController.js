@@ -28,8 +28,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     this.mensagemView = new index_2.MensagemView('#mensagemView');
                     this.negociacoesView.update(this.negociacoes);
                 }
-                adiciona(event) {
-                    event.preventDefault();
+                adiciona() {
                     let data = new Date(this._inputData.val().replace(/-/g, ','));
                     if (!this.verificaDiaUtil(data.getDay())) {
                         return;
@@ -75,6 +74,12 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             __decorate([
                 index_3.domInject('#valor')
             ], NegociacaoController.prototype, "_inputValor", void 0);
+            __decorate([
+                index_3.throttle()
+            ], NegociacaoController.prototype, "adiciona", null);
+            __decorate([
+                index_3.throttle()
+            ], NegociacaoController.prototype, "importaDados", null);
             exports_1("NegociacaoController", NegociacaoController);
             (function (DiaSemana) {
                 DiaSemana[DiaSemana["Domingo"] = 0] = "Domingo";
