@@ -50,14 +50,14 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     return true;
                 }
                 importaDados() {
-                    function isOk(res) {
+                    const isOk = (res) => {
                         if (res.ok) {
                             return res;
                         }
                         else {
                             throw new Error(res.statusText);
                         }
-                    }
+                    };
                     this._negociacaoService.obterNegociacoes(isOk).then((negociacoes) => negociacoes.forEach(negociacao => {
                         this.negociacoes.adiciona(negociacao);
                         this.negociacoesView.update(this.negociacoes);
