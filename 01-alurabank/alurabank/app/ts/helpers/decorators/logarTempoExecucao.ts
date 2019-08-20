@@ -16,7 +16,6 @@ export function logarTempoExecucao( showSeconds: boolean = false){
             const retorno = metodoOriginal.apply(this, args);
             
             const t2 = performance.now(); 
-            console.log(`o retorno do metodo ${method} é ${JSON.stringify(retorno)}`);
             
             console.log(`tempo de execucao: ${(t2 - t1) / divisor } ${unidade}`);
 

@@ -12,7 +12,6 @@ System.register([], function (exports_1, context_1) {
                 const t1 = performance.now();
                 const retorno = metodoOriginal.apply(this, args);
                 const t2 = performance.now();
-                console.log(`o retorno do metodo ${method} é ${JSON.stringify(retorno)}`);
                 console.log(`tempo de execucao: ${(t2 - t1) / divisor} ${unidade}`);
                 return retorno;
             };

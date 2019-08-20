@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../services/index"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../helpers/index", "../services/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var index_1, index_2, index_3, index_4, NegociacaoController, DiaSemana;
+    var index_1, index_2, index_3, index_4, index_5, NegociacaoController, DiaSemana;
     return {
         setters: [
             function (index_1_1) {
@@ -21,6 +21,9 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             },
             function (index_4_1) {
                 index_4 = index_4_1;
+            },
+            function (index_5_1) {
+                index_5 = index_5_1;
             }
         ],
         execute: function () {
@@ -29,7 +32,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     this.negociacoes = new index_1.Negociacoes();
                     this.negociacoesView = new index_2.NegociacoesView('#negociacoes', true);
                     this.mensagemView = new index_2.MensagemView('#mensagemView');
-                    this._negociacaoService = new index_4.NegociacaoService;
+                    this._negociacaoService = new index_5.NegociacaoService;
                     this.negociacoesView.update(this.negociacoes);
                 }
                 adiciona() {
@@ -39,6 +42,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     }
                     const negociacao = new index_1.Negociacao(data, parseInt(this._inputQuantidade.val()), parseFloat(this._inputValor.val()));
                     this.negociacoes.adiciona(negociacao);
+                    index_4.imprime(negociacao, this.negociacoes);
                     this.negociacoesView.update(this.negociacoes);
                     this.mensagemView.update('Negociação adicionada com sucesso!');
                 }
