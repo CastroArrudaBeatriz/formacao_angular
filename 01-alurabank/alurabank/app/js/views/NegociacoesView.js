@@ -23,7 +23,7 @@ System.register(["./View"], function (exports_1, context_1) {
                 </thead>
     
                 <tbody>
-                  ${modelo.getNegociacoes.map(negociacao => {
+                  ${modelo.getNegociacoes().map((negociacao) => {
                         return `
                         <tr>
                             <td>${negociacao.data.getDate()} / ${negociacao.data.getMonth() + 1} / ${negociacao.data.getFullYear()}</td>

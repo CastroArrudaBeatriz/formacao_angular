@@ -1,28 +1,26 @@
-System.register(["./imprimivel"], function (exports_1, context_1) {
+System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var imprimivel_1, Negociacoes;
+    var Negociacoes;
     return {
-        setters: [
-            function (imprimivel_1_1) {
-                imprimivel_1 = imprimivel_1_1;
-            }
-        ],
+        setters: [],
         execute: function () {
-            Negociacoes = class Negociacoes extends imprimivel_1.Imprimivel {
+            Negociacoes = class Negociacoes {
                 constructor() {
-                    super(...arguments);
                     this._negociacoes = [];
                 }
                 adiciona(negociacao) {
                     this._negociacoes.push(negociacao);
                 }
-                get getNegociacoes() {
+                getNegociacoes() {
                     return [].concat(this._negociacoes);
                 }
                 paraTexto() {
                     console.log('-- paraTexto --');
                     console.log(JSON.stringify(this._negociacoes));
+                }
+                equals(objeto) {
+                    return JSON.stringify(this._negociacoes) == JSON.stringify(objeto.getNegociacoes());
                 }
             };
             exports_1("Negociacoes", Negociacoes);

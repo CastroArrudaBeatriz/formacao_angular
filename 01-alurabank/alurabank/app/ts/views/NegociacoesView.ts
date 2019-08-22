@@ -1,5 +1,6 @@
 import { View } from './View';
 import { Negociacoes } from '../models/Negociacoes';
+import { Negociacao } from '../models/index';
 export class NegociacoesView extends View<Negociacoes>{
    
         template(modelo: Negociacoes): string{
@@ -15,7 +16,7 @@ export class NegociacoesView extends View<Negociacoes>{
                 </thead>
     
                 <tbody>
-                  ${modelo.getNegociacoes.map( negociacao => {
+                  ${modelo.getNegociacoes().map( (negociacao: Negociacao) => {
                      return `
                         <tr>
                             <td>${negociacao.data.getDate()} / ${negociacao.data.getMonth()+1} / ${negociacao.data.getFullYear()}</td>

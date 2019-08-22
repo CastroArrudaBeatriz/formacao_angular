@@ -62,10 +62,13 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                             throw new Error(res.statusText);
                         }
                     };
-                    this._negociacaoService.obterNegociacoes(isOk).then((negociacoes) => negociacoes.forEach(negociacao => {
-                        this.negociacoes.adiciona(negociacao);
-                        this.negociacoesView.update(this.negociacoes);
-                    }));
+                    this._negociacaoService.obterNegociacoes(isOk).then((negociacoesParaImportar) => {
+                        const negociacoesJaImportadas = this.negociacoes.getNegociacoes();
+                        negociacoesParaImportar.filter(value => !negociacoesJaImportadas.some(importada => value.equals(importada))).forEach(negociacao => {
+                            this.negociacoes.adiciona(negociacao);
+                            this.negociacoesView.update(this.negociacoes);
+                        });
+                    });
                 }
             };
             __decorate([

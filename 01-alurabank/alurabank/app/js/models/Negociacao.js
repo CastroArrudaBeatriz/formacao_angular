@@ -1,17 +1,12 @@
-System.register(["./imprimivel"], function (exports_1, context_1) {
+System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var imprimivel_1, Negociacao;
+    var Negociacao;
     return {
-        setters: [
-            function (imprimivel_1_1) {
-                imprimivel_1 = imprimivel_1_1;
-            }
-        ],
+        setters: [],
         execute: function () {
-            Negociacao = class Negociacao extends imprimivel_1.Imprimivel {
+            Negociacao = class Negociacao {
                 constructor(data, quantidade, valor) {
-                    super();
                     this.data = data;
                     this.quantidade = quantidade;
                     this.valor = valor;
@@ -25,6 +20,11 @@ System.register(["./imprimivel"], function (exports_1, context_1) {
             Quantidade: ${this.quantidade}, 
             Valor: ${this.valor}, 
             Volume: ${this.volume}`);
+                }
+                equals(objeto) {
+                    return this.data.getDate() == objeto.data.getDate() &&
+                        this.data.getMonth() == objeto.data.getMonth() &&
+                        this.data.getFullYear() == objeto.data.getFullYear();
                 }
             };
             exports_1("Negociacao", Negociacao);

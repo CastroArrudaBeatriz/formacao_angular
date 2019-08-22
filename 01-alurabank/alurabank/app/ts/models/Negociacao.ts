@@ -1,10 +1,10 @@
 import { Imprimivel } from "./imprimivel";
+import { Igualavel } from  "./Igualavel";
 
-export class Negociacao extends Imprimivel{
-
+export class Negociacao implements Imprimivel,Igualavel<Negociacao>{
+    
     constructor(readonly data: Date , readonly quantidade: number , readonly valor: number){
         
-        super();
     }
 
     get volume(){
@@ -19,5 +19,12 @@ export class Negociacao extends Imprimivel{
             Valor: ${this.valor}, 
             Volume: ${this.volume}`
         );
+    }
+
+    equals(objeto: Negociacao): boolean {
+        
+        return this.data.getDate() == objeto.data.getDate() &&
+               this.data.getMonth() == objeto.data.getMonth() &&
+               this.data.getFullYear() == objeto.data.getFullYear();
     }
 }

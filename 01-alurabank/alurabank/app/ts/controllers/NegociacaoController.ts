@@ -71,13 +71,20 @@ export class NegociacaoController {
 
 
         this._negociacaoService.obterNegociacoes(isOk).then(
-            (negociacoes: Negociacao[]) => negociacoes.forEach(negociacao => {
+            (negociacoesParaImportar: Negociacao[]) => {
+
+                const negociacoesJaImportadas = this.negociacoes.getNegociacoes();
+                negociacoesParaImportar.filter(
+                    
+                    value => !negociacoesJaImportadas.some(importada => value.equals(importada))
+                
+                ).forEach(negociacao => {
               
                 this.negociacoes.adiciona(negociacao);
                 this.negociacoesView.update(this.negociacoes);
 
             })
-        );
+        });
 
 
         
