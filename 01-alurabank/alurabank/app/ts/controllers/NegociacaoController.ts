@@ -84,7 +84,11 @@ export class NegociacaoController {
                 this.negociacoesView.update(this.negociacoes);
 
             })
-        });
+        }).catch(
+            (err: Error) => {
+                this.mensagemView.update(err.message)
+            }
+        );
 
 
         

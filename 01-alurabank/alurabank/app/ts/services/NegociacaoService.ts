@@ -4,14 +4,17 @@ export class NegociacaoService {
     
     obterNegociacoes(handler: HandlerFunction): Promise<void | Negociacao[]>{
 
-        return fetch('http://localhost:8080/dados')
+        return fetch('http://localhost:8080/dadosx')
         .then( res => handler(res))
         .then( res => res.json() )
         .then( (dados: NegociacaoParcial[]) => 
             dados.map(dado =>  new Negociacao( new Date(), dado.vezes , dado.montante))
         
         )
-        .catch( err => console.error(err));
+        .catch( err => {
+            console.error(err);
+            throw new Error('Não foi possivel importar as negociações');
+        });
 
     }
 }

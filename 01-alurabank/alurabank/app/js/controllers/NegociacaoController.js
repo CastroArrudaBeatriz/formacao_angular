@@ -68,6 +68,8 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                             this.negociacoes.adiciona(negociacao);
                             this.negociacoesView.update(this.negociacoes);
                         });
+                    }).catch((err) => {
+                        this.mensagemView.update(err.message);
                     });
                 }
             };
