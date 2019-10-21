@@ -1,1 +1,19 @@
-<app-photo *ngFor="let photo of photos"  [url]="photo.url" [description]="photo.description"></app-photo>
+<div class="text-center mt-3 mb-3">
+    <form>
+        
+        <i aria-hidden="true" class="fa fa-search mr-2"></i>
+        
+        <input class="rounded" 
+        type="search" 
+        placeholder="search..." 
+        (keyup) = "debounce.next($event.target.value)"
+        autofocus>
+    
+    </form>
+</div>
+
+<app-photos [photos]="photos | filterByDescription: filter"></app-photos>
+
+<app-load-button (click)="load()" 
+                [hasMore]="hasMore">
+</app-load-button>
