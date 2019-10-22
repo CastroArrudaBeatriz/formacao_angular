@@ -7,13 +7,15 @@ import { PhotoListComponent } from './photo-list.component';
 import { FilterByDescription } from './filter-by-description.pipe';
 import { PhotoModule } from '../photo/photo.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     declarations: [
         PhotoListComponent,
         PhotosComponent,
         LoadButtonComponent,
-        FilterByDescription
+        FilterByDescription,
+        SearchComponent
 
     ],
     imports: [
@@ -25,6 +27,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
         LoadButtonComponent,
         PhotoListComponent,
         PhotosComponent,
+        SearchComponent
 
     ]
 })
