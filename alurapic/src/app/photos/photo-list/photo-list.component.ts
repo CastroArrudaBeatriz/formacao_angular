@@ -40,10 +40,10 @@ export class PhotoListComponent implements OnInit {
   }
 
   load() {
-
     this.photoService.listFromUserPagination(this.userName , ++this.currentPage)
     .subscribe({
       next: photos => {
+        this.filter = '';
         this.photos = this.photos.concat(photos);
         if (!photos.length) {
           this.hasMore = false;

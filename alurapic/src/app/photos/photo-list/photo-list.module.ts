@@ -20,8 +20,8 @@ import { SearchComponent } from './search/search.component';
     ],
     imports: [
         CommonModule,
-        PhotoModule,
-        SharedModule
+        SharedModule,
+        PhotoModule
     ],
     exports: [
         LoadButtonComponent,
