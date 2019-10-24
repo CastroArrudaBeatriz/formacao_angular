@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
     ],
     imports: [
         CommonModule
+    ],
+    exports: [
+        VmessageComponent
     ]
 })
 export class VMessageModule {
