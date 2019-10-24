@@ -13,6 +13,7 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - npm install
           - npm install -g @angular/cli
+          - npm i @angular-devkit/build-angular
           - cd alurapic/
           - npm run lint
           - npm test
