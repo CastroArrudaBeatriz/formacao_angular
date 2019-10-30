@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { TokenService } from 'src/app/core/token/token.service';
 
 @Component({
     selector: 'app-signin',
@@ -32,7 +33,9 @@ export class SigInComponent implements OnInit {
 
                 private route: Router,
 
-                private platformDetectorService: PlatformDetectorService) {
+                private platformDetectorService: PlatformDetectorService,
+
+                private tokenService: TokenService) {
 
     }
 
@@ -49,7 +52,11 @@ export class SigInComponent implements OnInit {
         const password = this.loginForm.get('password').value;
 
         this.authService.authenticate(username , password ).subscribe({
-            next: () => this.route.navigate(['user', username]),
+            next: () => {
+                if (this.tokenService.existToken()) {
+                    this.route.navigate(['user', username]);
+                }
+            },
             error: err => {
                 console.error(err);
                 alert('Invalid username or password!');

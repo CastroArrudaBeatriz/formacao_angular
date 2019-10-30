@@ -9,6 +9,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { HomeModule } from './home/home.module';
 import { AuthService } from './core/auth/auth.service';
 import { PlatformDetectorService } from './core/platform-detector/platform-detector.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PlatformDetectorService } from './core/platform-detector/platform-detec
     PhotosModule,
     ErrorsModule,
     HomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     AuthService,
