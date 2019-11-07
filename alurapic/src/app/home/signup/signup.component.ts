@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
-import { UserNotTakenService } from './user-not-taken.validators.service';
+import { UserNotTakenValidatorService } from './user-not-taken.validators.service';
+import { NewUser } from 'src/app/model/new_user';
+import { SignUpService } from './signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +15,11 @@ export class SignupComponent implements OnInit {
 
   signUpForm: FormGroup;
   constructor( private formBuilder: FormBuilder,
-               private userNotTaken: UserNotTakenService) { }
+               private userNotTaken: UserNotTakenValidatorService,
+
+               private signupServive: SignUpService,
+               
+               private router: Router) { }
 
   ngOnInit() {
 
@@ -32,14 +39,11 @@ export class SignupComponent implements OnInit {
         ]
       ],
       userName: ['',
-        [
-          Validators.required,
-          lowerCaseValidator,
-          Validators.minLength(2),
-          Validators.maxLength(30)
-        ],
-        this.userNotTaken.checkUserNameTaken()
-      ],
+      [Validators.required,
+       lowerCaseValidator,
+       Validators.minLength(2) ,
+       Validators.maxLength(30)] ,
+      this.userNotTaken.checkUserNameTaken()],
 
       password: ['',
         [
@@ -51,4 +55,12 @@ export class SignupComponent implements OnInit {
     });
   }
 
+
+  signUp() {
+    const user: NewUser = this.signUpForm.getRawValue();
+    this.signupServive.signup(user).subscribe({
+      next: () => this.router.navigate(['']),
+      error: err => console.error(err)
+    });
+  }
 }

@@ -3,28 +3,29 @@ import { AbstractControl } from '@angular/forms';
 import { SignUpService } from './signup.service';
 
 import { debounceTime, switchMap, map, first } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+
+interface userTaken {
+    userTaken: boolean;
+}
 
 @Injectable({ providedIn: 'root'})
-export class UserNotTakenService {
+export class UserNotTakenValidatorService {
 
-    constructor( private signUpService: SignUpService) {
-        this.checkUserNameTaken();
-    }
+    constructor( private signUpService: SignUpService) {  }
 
     checkUserNameTaken() {
-
         return (control: AbstractControl) => {
-
-            control.valueChanges.pipe(
+            return control.valueChanges.pipe(
                 debounceTime(300)
             ).pipe(
-                switchMap( userName => this.signUpService.checkUserNameTaken(userName))
+                switchMap( userName => this.signUpService.checkUserNameTaken(userName) )
             ).pipe(
-                map(isTaken => isTaken ? {userNameTaken: true} : null)
+                map( taken => taken ? {userNameTaken: true} : null)
             ).pipe(
                 first()
             );
-
         };
+
     }
 }

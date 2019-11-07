@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NewUser } from 'src/app/model/new_user';
 
-const API = 'http://localhost:3000';
+const API_URL = 'http://localhost:3000';
 @Injectable(
     { providedIn: 'root'}
 )
@@ -11,6 +12,10 @@ export class SignUpService {
 
     checkUserNameTaken(userName: string) {
 
-        return this.http.get(`${API}/user/exits/${userName}`);
-    }
+        return this.http.get(API_URL + '/user/exists/' + userName);
+   }
+
+   signup(user: NewUser) {
+        return this.http.post(`${API_URL}/user/signup`, user);
+   }
 }

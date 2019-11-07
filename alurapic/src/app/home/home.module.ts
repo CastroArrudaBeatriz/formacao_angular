@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     declarations: [
         SigInComponent,
-        SignupComponent
+        SignupComponent,
+        HomeComponent
     ],
     imports: [
         CommonModule,
